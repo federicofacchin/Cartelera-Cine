@@ -1,0 +1,42 @@
+﻿@model NT1_2022_1C_B_G2.Models.Pelicula
+
+@{
+    ViewData["Title"] = "Delete";
+}
+
+<h3 style="color:white">Esta seguro que deseas borrar esta pelicula?</h3>
+<div>
+    <hr />
+    <dl class="row" style="color:white">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.FechaLanzamiento)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.FechaLanzamiento)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Titulo)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Titulo)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Descripcion)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Descripcion)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Genero)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Genero.Nombre)
+        </dd class>
+    </dl>
+    
+    <form asp-action="Delete">
+        <input type="hidden" asp-for="Id" />
+        <input type="submit" value="Borrar" class="btn btn-outline-danger" style="color:white"/> |
+        <input type="button" value="Volver" class="btn btn-outline-info" style="color:white" onclick="location.href='@Url.Action("Index", "Peliculas")'" />
+    </form>
+</div>

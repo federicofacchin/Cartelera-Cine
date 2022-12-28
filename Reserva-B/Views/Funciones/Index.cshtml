@@ -1,0 +1,99 @@
+﻿@using NT1_2022_1C_B_G2.Controllers
+@model IEnumerable<NT1_2022_1C_B_G2.Models.Funcion>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1 class="text-center" style="color:white">Funciones</h1>
+<br />
+<h4 class="text-center">
+    <a class="btn btn-outline-info" style="color:white" asp-action="Create">Crear Función</a>
+</h4>
+<table class="table table-striped table-borderless table-dark" style="border-radius: 40px 40px 40px 40px;  text-indent: 5%">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.FechaYHora)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Pelicula)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Sala)
+            </th>
+             <th>
+                @Html.DisplayNameFor(model => model.DescripcionDetallada)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Confirmada)
+            </th>
+            <th>Acciones</th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.FechaYHora)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Pelicula.Titulo)
+            </td>
+             <td>
+                @Html.DisplayFor(modelItem => item.Sala.Numero)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DescripcionDetallada)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Confirmada)
+            </td>
+            <td>
+                <ul style="list-style: none;">
+                     @if (User.IsInRole("Empleado"))
+                     {
+                        <li>
+                            <a class="btn btn-outline-info btn-sm mb-1" style="color:white" asp-action="VerReservas" asp-route-id="@item.Id">
+                                Reservas
+                            </a>
+                        </li>
+                     }
+
+                    @if (!item.Reservas.Any()){
+                        @if(!item.Confirmada)
+                        {
+                            <li>
+                                <a class="btn btn-outline-success btn-sm mb-1" style="color:white" asp-action="Habilitar" asp-route-id="@item.Id">
+                                    Habilitar
+                                </a>
+                            </li>
+                        }
+                        @if(item.Confirmada)
+                        {
+                                <li>
+                                <a class="btn btn-outline-danger btn-sm mb-1" style="color:white" asp-action="Habilitar" asp-route-id="@item.Id">
+                                    Deshabilitar
+                                </a>
+                            </li>
+                        }
+                    }
+
+                            
+                      
+                    <li>
+                        <a class="btn btn-outline-info btn-sm mb-1" style="color:white" asp-action="Details" asp-route-id="@item.Id">
+                            Detalles
+                        </a>
+                    </li>
+                    <li>
+                        <a class="btn btn-outline-danger btn-sm mb-1" style="color:white" asp-action="Delete" asp-route-id="@item.Id">
+                            Cancelar
+                        </a>
+                    </li>
+                </ul>   
+                </td>
+        </tr>
+}
+    </tbody>
+</table>

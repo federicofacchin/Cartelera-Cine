@@ -1,0 +1,40 @@
+﻿@model NT1_2022_1C_B_G2.ViewModels.Registracion
+
+@{
+    ViewData["Title"] = "Registrar";
+}
+
+<h1>Registrar</h1>
+
+<hr />
+<div class="row">
+    <div class="col-md-4 text-center" style="color:white">
+        <form asp-action="Registrar">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Email" class="control-label"></label>
+                <input asp-for="Email" class="form-control" />
+                <span asp-validation-for="Email" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Password" class="control-label"></label>
+                <input asp-for="Password" class="form-control"/>
+                <span asp-validation-for="Password" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ConfirmarPassword" class="control-label"></label>
+                <input asp-for="ConfirmarPassword" class="form-control"/>
+                <span asp-validation-for="ConfirmarPassword" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Registrar" class="btn btn-outline-info" style="color:white" />
+                <input type="button" value="Volver" class="btn btn-outline-info" style="color:white" onclick="location.href='@Url.Action("Index", "Home")'" />
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

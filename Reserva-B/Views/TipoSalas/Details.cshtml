@@ -1,0 +1,29 @@
+﻿@model NT1_2022_1C_B_G2.Models.TipoSala
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1 style="color: white">Detalles de Tipo de Sala</h1>
+
+<div>
+    <hr />
+    <dl class="row" style="color:white">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Nombre)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Nombre)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Precio)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Precio)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a class="btn btn-outline-info" style="color:white" asp-action="Edit" asp-route-id="@Model.Id">Editar</a> |
+    <input type="button" value="Volver" class="btn btn-outline-info" style="color:white" onclick="location.href='@Url.Action("Index", "TipoSalas")'" />
+</div>

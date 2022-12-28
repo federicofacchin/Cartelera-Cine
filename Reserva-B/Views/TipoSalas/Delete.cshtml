@@ -1,0 +1,29 @@
+﻿@model NT1_2022_1C_B_G2.Models.TipoSala
+
+@{
+    ViewData["Title"] = "Delete";
+}
+<h3 style="color:white">Esta seguro que desea borrar este tipo de sala?</h3>
+<hr />
+<div>
+    <dl class="row" style="color:white">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Nombre)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Nombre)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Precio)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Precio)
+        </dd>
+    </dl>
+    
+    <form asp-action="Delete">
+        <input type="hidden" asp-for="Id" />
+        <input type="submit" value="Borrar" class="btn btn-outline-danger" style="color:white" /> |
+        <input type="button" value="Volver" class="btn btn-outline-info" style="color:white" onclick="location.href='@Url.Action("Index", "TipoSalas")'" />
+    </form>
+</div>

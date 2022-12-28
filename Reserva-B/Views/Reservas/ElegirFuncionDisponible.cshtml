@@ -1,0 +1,42 @@
+﻿@model NT1_2022_1C_B_G2.ViewModels.Reservar1
+
+@{
+    ViewData["Title"] = "Reservar";
+}
+
+<h1 style="color: white" class="text-center">Elija la Funcion a la que desea asistir</h1>
+
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="ElegirFuncionDisponible">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+            <div class="form-group">
+                <label asp-for="PeliculaId" class="control-label">Pelicula</label>
+                <select asp-for="PeliculaId" class ="form-control" asp-items="ViewBag.Pelicula"></select>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="CantidadButacas" class="control-label"></label>
+                <input asp-for="CantidadButacas" class="form-control" />
+                <span asp-validation-for="CantidadButacas" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="FuncionId" class="control-label"></label>
+                <select asp-for="FuncionId" class ="form-control" asp-items="ViewBag.Funciones"></select>
+                <span asp-validation-for="FuncionId" class="text-danger"></span>
+            </div>
+            <div class="form-group"> 
+                <input type="submit" value="Siguiente" class="btn btn-outline-info"/>
+                <input type="button" value="Cancelar" class="btn btn-outline-info" onclick="location.href='@Url.Action("Index", "Home")'" />
+            </div>
+        </form>
+    </div>
+</div>
+
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

@@ -1,0 +1,49 @@
+﻿@using NT1_2022_1C_B_G2.Controllers
+@model NT1_2022_1C_B_G2.Models.Funcion
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+
+
+<h1 style="color:white">Detalle Funcion</h1>
+
+<div>
+    <hr />
+    <dl class="row" style="color:white">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.FechaYHora)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.FechaYHora)
+        </dd>
+        <dt class = "col-sm-2">
+            ButacasDisponibles
+        </dt>
+        <dd class = "col-sm-10">
+            @ViewBag.ButacasDisponibles
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Sala)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Sala.Id)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Pelicula)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Pelicula.Titulo)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Confirmada)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Confirmada)
+        </dd>
+    </dl>
+</div>
+<div>
+     <input  type="button" value="Volver" class="btn btn-outline-info" style="color:white" onclick="location.href='@Url.Action("Index", "Funciones")'" />
+</div>

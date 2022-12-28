@@ -1,0 +1,36 @@
+﻿@model NT1_2022_1C_B_G2.Models.Cliente
+@{
+    ViewData["Title"] = "EditMyProfile";
+}
+
+<h1>Editar mi perfil</h1>
+
+<h4>Edite sus datos de contacto</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="EditMyProfile">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Id" />
+
+            <div class="form-group">
+                <label asp-for="Direccion" class="control-label"></label>
+                <input asp-for="Direccion" class="form-control" />
+                <span asp-validation-for="Direccion" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Telefono" class="control-label"></label>
+                <input asp-for="Telefono" class="form-control" />
+                <span asp-validation-for="Telefono" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Guardar" class="btn btn-outline-info" />
+                <input type="button" value="Volver" class="btn btn-outline-info" onclick="location.href='@Url.Action("Index", "Home")'" />
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

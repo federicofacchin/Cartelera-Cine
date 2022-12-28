@@ -1,0 +1,34 @@
+﻿@model IEnumerable<NT1_2022_1C_B_G2.Models.Genero>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1 class="text-center" style="color: white">Generos</h1>
+<br />
+<h4 class="text-center">
+    <a class="btn btn-outline-info" style="color:white" asp-action="Create">Crear Genero</a>
+</h4>
+<table class="table table-striped table-borderless table-dark" style="border-radius: 40px 40px 40px 40px;  text-indent: 10%">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Nombre)
+            </th>
+            <th>Acciones</th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Nombre)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.Id" style="color:aqua">Editar</a> |
+                <a asp-action="Delete" asp-route-id="@item.Id" style="color:aqua">Borrar</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

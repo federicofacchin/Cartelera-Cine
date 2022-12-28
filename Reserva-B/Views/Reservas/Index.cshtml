@@ -1,0 +1,69 @@
+﻿@model IEnumerable<NT1_2022_1C_B_G2.Models.Reserva>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1 class=" text-center" style="color:white">Reservas</h1>
+<br />
+@if (User.IsInRole("Cliente"))
+{
+    <h3 class="text-center" style="color: white">Mis Reservas</h3>
+<span>
+    <input type="button" value="Crear Reserva" class="btn btn-outline-info" style="color:white" onclick="location.href='@Url.Action("Index", "Home")'" />
+    <input type="button" value="Reserva Activa" class="btn btn-outline-info" style="color:white" onclick="location.href='@Url.Action("ReservaActiva", "Reservas")'" />
+    <input type="button" value="Reservas Pasadas" class="btn btn-outline-info" style="color:white" onclick="location.href='@Url.Action("ReservasPasadas", "Reservas")'" />
+</span>
+}
+
+<table class="table table-striped table-borderless table-dark" table-borderless style="border-radius: 40px 40px 40px 40px;  text-indent: 10%">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Funcion)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FechaAlta)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CantidadButacas)
+            </th>
+            @if (!User.IsInRole("Cliente"))
+            {
+                <th>
+                    @Html.DisplayNameFor(model => model.Cliente)
+                </th>
+            }
+            
+            <th>Acciones</th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Funcion.DescripcionDetallada)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FechaAlta)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CantidadButacas)
+            </td>
+                @if (!User.IsInRole("Cliente"))
+                {
+                     <td>
+                         @Html.DisplayFor(modelItem => item.Cliente.Nombre)
+                    </td>
+                }
+            
+            <td>
+                <a asp-action="Details" asp-route-id="@item.Id" style="color:aqua">Detalles</a> 
+                @if(User.IsInRole("Cliente")){
+                    <a asp-action="Delete" asp-route-id="@item.Id" style="color:aqua">| Cancelar</a>
+                }
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

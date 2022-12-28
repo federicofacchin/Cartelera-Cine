@@ -1,0 +1,46 @@
+﻿@model IEnumerable<NT1_2022_1C_B_G2.Models.Sala>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1 class="text-center" style="color: white">Salas</h1>
+<br />
+<h4 class="text-center">
+    <a class="btn btn-outline-info" style="color:white " asp-action="Create">Crear Sala</a>
+</h4>
+<table class="table table-striped table-dark table-borderless " style="border-radius: 40px 40px 40px 40px;  text-indent: 10%">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Numero)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CapacidadButacas)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TipoSala)
+            </th>
+            <th>Acciones</th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Numero)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CapacidadButacas)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TipoSala.Nombre)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.Id" style="color:aqua">Editar</a> |
+                <a asp-action="Details" asp-route-id="@item.Id" style="color:aqua">Detalles</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

@@ -1,0 +1,46 @@
+﻿@model IEnumerable<NT1_2022_1C_B_G2.Models.Reserva>
+
+@{
+    ViewData["Title"] = "ReservasPorFuncion";
+}
+
+<h1 class="text-center" style="color:white">Reservas por funcion</h1>
+<hr />
+<table class="table table-striped table-borderless table-dark" table-borderless style="border-radius: 40px 40px 40px 40px;  text-indent: 10%">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.FechaAlta)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CantidadButacas)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Cliente)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Funcion)
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.FechaAlta)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CantidadButacas)
+            </td>
+             
+            <td>
+                @Html.DisplayFor(modelItem => item.Cliente.Nombre)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Funcion.DescripcionDetallada)
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
+<input type="button" value="Volver" class="btn btn-outline-info" style="color:white" onclick="location.href='@Url.Action("Index", "Funciones")'" />

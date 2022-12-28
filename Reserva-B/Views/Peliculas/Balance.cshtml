@@ -1,0 +1,12 @@
+﻿@model double
+
+@{
+    ViewData["Title"] = "Balance";
+}
+
+<h1 style="color:white" class="text-center" >@ViewBag.Pelicula</h1>
+<h2 style="color:white" class="text-center">La recaudacion del mes en curso hasta el dia de la fecha es : $ @Model</h2>
+<div style="color:white">
+    <input type="button" value="Volver" class="btn btn-outline-info btn-sm" style="color:white" onclick="location.href='@Url.Action("Index", "Peliculas")'" />
+
+</div>

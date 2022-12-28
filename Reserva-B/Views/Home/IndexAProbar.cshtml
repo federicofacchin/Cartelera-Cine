@@ -1,0 +1,141 @@
+﻿@model IEnumerable<NT1_2022_1C_B_G2.Models.Pelicula>
+@using Microsoft.AspNetCore.Identity
+@inject SignInManager<Persona> signInManager
+
+@{
+    ViewData["Title"] = "Cartelera";
+    var Pelicula1 = @Model.Where(p => p.Id == 1).First();
+    var Pelicula2 = @Model.Where(p => p.Id == 2).First();
+    var Pelicula3 = @Model.Where(p => p.Id == 3).First();
+}
+
+<h1 class="align-content-center m-4">CARTELERA</h1>
+
+@if(!signInManager.IsSignedIn(User))
+{
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-6 col-md-6 col-lg-4">
+            <div class="card bg-dark align-items-center p-xl-4">
+              <a asp-action="IniciarSesion" asp-controller="Account" asp-route-id="@Pelicula1.Id" class="btn">
+              <img src=~/img/pulp-fiction.jpg alt="Pelicula1" class="card-img-top img-fluid" >
+              </a>
+              <div class="card-body">
+                <h5 class="text-light">@Pelicula1.Titulo</h5>
+                <p class="card-text text-light">@Pelicula1.Descripcion</p>
+              </div>
+            </div>
+        </div>
+
+        <div class="col-sm-6 col-md-6 col-lg-4">
+            <div class="card bg-dark align-items-center p-xl-4">
+              <a asp-action="IniciarSesion" asp-controller="Account" asp-route-id="@Pelicula2.Id" class="btn">  
+              <img src="~/img/blade-runner.jpg" alt="Pelicula2" class="card-img-top img-fluid" >
+              </a>
+              <div class="card-body">
+                <h5 class="text-light">@Pelicula2.Titulo</h5>
+                <p class="card-text text-light">@Pelicula2.Descripcion</p>
+              </div>
+            </div>
+        </div>
+
+        <div class="col-sm-6 col-md-6 col-lg-4">
+            <div class="card bg-dark align-items-center p-xl-4">
+              <a asp-action="IniciarSesion" asp-controller="Account" asp-route-id="@Pelicula3.Id" class="btn">  
+              <img src="~/img/alien.jpg" alt="Pelicula3" class="card-img-top img-fluid" >
+              </a>
+              <div class="card-body">
+                <h5 class="text-light">@Pelicula3.Titulo</h5>
+                <p class="card-text text-light">@Pelicula3.Descripcion</p>
+              </div>
+            </div>
+        </div>
+      </div>
+    </div>
+}
+
+@if(signInManager.IsSignedIn(User) && (User.IsInRole("Cliente")))
+{
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-6 col-md-6 col-lg-4">
+            <div class="card bg-dark align-items-center p-xl-4">
+              <a asp-action="Create" asp-controller="Reservas" asp-route-id="@Pelicula1.Id" class="btn">
+              <img src=~/img/pulp-fiction.jpg alt="Pelicula1" class="card-img-top img-fluid" >
+              </a>
+              <div class="card-body">
+                <h5 class="text-light">@Pelicula1.Titulo</h5>
+                <p class="card-text text-light">@Pelicula1.Descripcion</p>
+              </div>
+            </div>
+        </div>
+
+        <div class="col-sm-6 col-md-6 col-lg-4">
+            <div class="card bg-dark align-items-center p-xl-4">
+              <a asp-action="Create" asp-controller="Reservas" asp-route-id="@Pelicula2.Id" class="btn">  
+              <img src="~/img/blade-runner.jpg" alt="Pelicula2" class="card-img-top img-fluid" >
+              </a>
+              <div class="card-body">
+                <h5 class="text-light">@Pelicula2.Titulo</h5>
+                <p class="card-text text-light">@Pelicula2.Descripcion</p>
+              </div>
+            </div>
+        </div>
+
+        <div class="col-sm-6 col-md-6 col-lg-4">
+            <div class="card bg-dark align-items-center p-xl-4">
+              <a asp-action="Create" asp-controller="Reservas" asp-route-id="@Pelicula3.Id" class="btn">  
+              <img src="~/img/alien.jpg" alt="Pelicula3" class="card-img-top img-fluid" >
+              </a>
+              <div class="card-body">
+                <h5 class="text-light">@Pelicula3.Titulo</h5>
+                <p class="card-text text-light">@Pelicula3.Descripcion</p>
+              </div>
+            </div>
+        </div>
+      </div>
+    </div>
+}
+
+@if(signInManager.IsSignedIn(User) && !(User.IsInRole("Cliente")))
+{
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-6 col-md-6 col-lg-4">
+            <div class="card bg-dark align-items-center p-xl-4">
+              <a asp-action="Index" asp-controller="Reservas" asp-route-id="@Pelicula1.Id" class="btn">
+              <img src=~/img/pulp-fiction.jpg alt="Pelicula1" class="card-img-top img-fluid" >
+              </a>
+              <div class="card-body">
+                <h5 class="text-light">@Pelicula1.Titulo</h5>
+                <p class="card-text text-light">@Pelicula1.Descripcion</p>
+              </div>
+            </div>
+        </div>
+
+        <div class="col-sm-6 col-md-6 col-lg-4">
+            <div class="card bg-dark align-items-center p-xl-4">
+              <a asp-action="Index" asp-controller="Reservas" asp-route-id="@Pelicula2.Id" class="btn">  
+              <img src="~/img/blade-runner.jpg" alt="Pelicula2" class="card-img-top img-fluid" >
+              </a>
+              <div class="card-body">
+                <h5 class="text-light">@Pelicula2.Titulo</h5>
+                <p class="card-text text-light">@Pelicula2.Descripcion</p>
+              </div>
+            </div>
+        </div>
+
+        <div class="col-sm-6 col-md-6 col-lg-4">
+            <div class="card bg-dark align-items-center p-xl-4">
+              <a asp-action="Index" asp-controller="Reservas" asp-route-id="@Pelicula3.Id" class="btn">  
+              <img src="~/img/alien.jpg" alt="Pelicula3" class="card-img-top img-fluid" >
+              </a>
+              <div class="card-body">
+                <h5 class="text-light">@Pelicula3.Titulo</h5>
+                <p class="card-text text-light">@Pelicula3.Descripcion</p>
+              </div>
+            </div>
+        </div>
+      </div>
+    </div>
+}
