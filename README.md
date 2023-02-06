@@ -1,3 +1,18 @@
+#Instrucciones de Ejecución
+
+1- clonar el repositorio con Git clone de forma local.
+2- Correr con visual Studio IIS Express.
+3- Al abrirse seleccionar PrecargaDb en el footer.
+4- para probar todas las funcionalidades de la pagina logearse con el siguiente mail y contraseña:
+
+Clientes(para elegir otro cliente reemplazar el nro del user por otro comprendido entre 1 a 10):
+user :cliente1@ort.edu.ar
+password: Password1!
+
+Empleados(para elegir otro cliente reemplazar el nro del user por otro comprendido entre 1 a 10):
+user :Empleado1@ort.edu.ar
+password: Password1!
+
 # Reserva Espectaculo 📖
 
 ## Objetivos 📋
